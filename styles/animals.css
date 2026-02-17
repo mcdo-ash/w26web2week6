@@ -45,8 +45,10 @@
 /********************************
 			Custom Properties
 ********************************/
-
-
+/* root means the root element of the document, this will make your custom properties available to the whole page (or global in scope) */
+:root{
+	--mud-brown: #542401;
+}
 
 /********************************
 			Main
@@ -83,3 +85,131 @@ footer{
 	Special (added in class)
 ********************************/
 
+/* always set a maximum width for your site */
+/* padding and margin is top, left, right, and bottom in values */
+/* calc can be used to calculate a value to keep it at a number you desire */
+main{
+	/* width: calc(960px - 50px); */
+	width: 960px;
+	margin: 0 auto;
+	border: 25px solid var(--mud-brown);
+	border-top: 0px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	padding: 25px 45px 45px;
+/* to account for the extra margin and padding, we can use box-sizing */
+	box-sizing: border-box;
+	/* border-box means the padding and border will be calculated within the width of the element 
+	(so long as you have a set width)*/
+	background-image: url(../images/corkback.jpg);
+	/* in boxshadow, the properties are
+	type
+	x offset
+	y offset
+	length (or size)
+	color */
+	box-shadow: 5px 5px 10px black, inset 3px 3px 7px black;
+	/*first box shadow is outside, second is inside  */
+	display:grid;
+	grid-template-columns: 1fr;
+}
+
+
+/************ NAV **************/
+
+nav{
+	width: 960px;
+	margin: 0 auto;
+	background: var(--mud-brown);
+	height: 55px;
+	font-size: 2em;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	/* make the menu stick to the top of a page */
+	position: sticky;
+	top: 0;
+}
+
+/* the > selector means direct child, or only the ul that is a direct child of the nav (and not the ul inside of the ul) */
+
+nav > ul{
+	display:flex;
+	justify-content: flex-end;
+	padding-top: 15px;
+}
+
+/* now to only effect the list items that are a direct child of the first ul */
+
+nav > ul > li{
+	padding: 0 10px;
+	position: relative;
+	/* this needs to be position relative so it will hold the absolutely positioned drop-down */	
+}
+
+nav ul li ul{
+	display: none;
+}
+
+nav ul li:hover ul{
+	display: block;
+	position: absolute;
+	background-color: var(--mud-brown);
+	padding: 10px;
+	box-shadow: 3px 3px 7px black;
+}
+
+nav a{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* makes the links in the drop down menu look better */
+nav ul li ul a{
+	line-height: 1.5;
+}
+
+/***********PICTURES************/
+
+p{
+	line-height:1.4;
+}
+
+article{
+	background-color: white;
+	border: 1px solid #aaa;
+	box-shadow: 2px 2px 4px rgb(50,50,50);
+	border-radius: 2px;
+}
+
+header article{
+	margin: 20px 0;
+	padding: 10px;
+}
+
+section article{
+	width: 350px;
+	padding: 23px;
+	position:relative
+}
+
+/* 2n is every other starting with second adding + 1 is every second starting with the first */
+main section:nth-child(2n+1){
+	justify-self:end;
+	margin-top:-100px;
+	margin-bottom: -100px;
+}
+
+/* tape thing */
+
+section article::before{
+	content: '';
+
+	width:180px;
+	height:50px;
+	background-color: rgba(222,222,222,0.6);
+	position: absolute;
+	left: 105px;
+	top:-15px;
+	transform:rotate(-5deg)
+}
