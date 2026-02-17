@@ -128,6 +128,7 @@ nav{
 	/* make the menu stick to the top of a page */
 	position: sticky;
 	top: 0;
+	z-index: 50;
 }
 
 /* the > selector means direct child, or only the ul that is a direct child of the nav (and not the ul inside of the ul) */
@@ -212,4 +213,31 @@ section article::before{
 	left: 105px;
 	top:-15px;
 	transform:rotate(-5deg)
+}
+
+/* the first letter pseudo class allows you to target the first letter within an HTML element */
+
+h1 span{
+	display: block;
+	/* ::first-letter only works on block elements */
+	margin: 0 15px; 
+}
+
+h1 span::first-letter{
+	font-family: 'Moo Lah Lah', cursive;
+	font-size: 1.3em
+}
+
+h1{
+	display:flex;
+	justify-content: center;
+}
+
+/***********ATTRIBUTE SELECTORS************/
+
+a[href*="wiki"]{
+	background-image:url(../images/wikipedia-icon.png);
+	background-size:contain;
+	background-repeat: no-repeat;
+	padding-left:1.5em;
 }
